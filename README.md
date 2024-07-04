@@ -44,18 +44,36 @@ Both applications should hot-reload as you make changes, so don't worry about st
 1. Our customers cannot see the price of our items, or if they are on sale. Our customer service associates cannot see
 the product style code. Add these in a suitable place, suitably styled for the types of information they are.
     * Prices should be displayed in Pounds Sterling, to the appropriate accuracy.
+  
+      // £${numeral(value).format('0,0.00')} - we could use numeral, however we need to remember to import it first from library
+
     * Both the original price, and current price are available through the API (`originalPrice` and `price`). If the
    `price` is lower than the `originalPrice`, the product is on sale.
+
+      // By comparising we can uhave to options one with price dsiplayed and one with price displayed and SALE added to it
+
     * Style Codes are a short identifier for a product, normally `LETTER LETTER NUMBER NUMBER`, e.g. `AU01`. Web customers
       don't frequently use them.
-2. We've received reports that the 'item limit' dropdown on the front-end doesn't change the number of items returned.
+
+      // The style codes could be replaced with words. We could assign different style to style code for reading. 
+
+1. We've received reports that the 'item limit' dropdown on the front-end doesn't change the number of items returned.
 Hook this dropdown up to the back-end, and ensure the API only returns the requested number of items.
    * Ensure this solution is implemented on the back-end.
+
+     // always fetch the accurate numbers from the database. 
+     
    * What's the risk of implementing it on the front-end?
-3. The Collection dropdown is handy, but at the moment requires changes to the client if we get a new collection in!
+   
+      // user could book add more items to the cart than are available. 
+
+2. The Collection dropdown is handy, but at the moment requires changes to the client if we get a new collection in!
 We want to be able to add collections in a more sustainable way, from a centralised back-end source.
+
     * Implement an API endpoint to get the different collections from `server/data/collections.json`, and use this
+      
    endpoint to populate the collection dropdown. If you've been successful, you should see the `sleep` category added.
+   
 4. We're always after input from all members of the team - and this is deliberately an imperfect implementation. Improve
 the UI/UX of the application. For each improvement you make, add a note here of what you did and why.
    | What you did               | Why                                                             |
